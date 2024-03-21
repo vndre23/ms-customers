@@ -32,21 +32,20 @@ public class CustomerBusinessControllerTest {
 
     @Test
     void testFindAll() {
-        // Arrange
+        
         CustomerBusiness customerBusiness = new CustomerBusiness();
         when(customerBusinessService.findAll()).thenReturn(Flux.just(customerBusiness));
 
-        // Act
+        
         Mono<ResponseEntity<Flux<CustomerBusiness>>> response = customerBusinessController.findAll();
 
-        // Assert
+       
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.block().getStatusCode());
     }
 
     @Test
     void testFindById() {
-        // Arrange
         String id = "1";
         CustomerBusiness customerBusiness = new CustomerBusiness();
         when(customerBusinessService.findById(id)).thenReturn(Mono.just(customerBusiness));
@@ -58,8 +57,5 @@ public class CustomerBusinessControllerTest {
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.block().getStatusCode());
     }
-
-
-
-    // Similar tests for other controller methods
+    
 }
